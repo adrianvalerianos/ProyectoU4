@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="338.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.NuevaTareaController">
+   <children>
+      <Label layoutX="30.0" layoutY="27.0" text="Nueva tarea">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="67.0" layoutY="75.0" text="Título">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="30.0" layoutY="122.0" text="Descripción">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="66.0" layoutY="241.0" text="Fecha">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="404.0" layoutY="75.0" text="Color">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <TextArea fx:id="txtDescripcion" layoutX="116.0" layoutY="116.0" prefHeight="101.0" prefWidth="246.0" />
+      <TextField fx:id="txfTitulo" layoutX="116.0" layoutY="73.0" />
+      <DatePicker fx:id="dtFecha" layoutX="116.0" layoutY="238.0" prefHeight="25.0" prefWidth="104.0" />
+      <ChoiceBox fx:id="seleccionColor" layoutX="404.0" layoutY="110.0" prefWidth="150.0" />
+      <Button fx:id="btnAgregar" layoutX="502.0" layoutY="281.0" mnemonicParsing="false" onAction="#agregar" text="Agregar" />
+      <Button fx:id="btnCancelar" layoutX="421.0" layoutY="281.0" mnemonicParsing="false" onAction="#cancelar" text="Cancelar" />
+   </children>
+</AnchorPane>
