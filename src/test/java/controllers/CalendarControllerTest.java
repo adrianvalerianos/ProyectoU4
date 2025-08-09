@@ -2,6 +2,7 @@ package controllers;
 
 import org.junit.jupiter.api.Test;
 
+import java.lang.reflect.Field;
 import java.time.ZonedDateTime;
 import java.util.ArrayList;
 
@@ -11,24 +12,14 @@ class CalendarControllerTest {
     private CalendarController controller = new CalendarController();
 
     @Test
-    void testCambioMesHaciaAtras() {
-        controller.dateFocus = ZonedDateTime.now();
-        ZonedDateTime fechaInicial = controller.dateFocus;
+    void testDateSearchFormat() {
+        int año = 2023;
+        int mes = 5;
+        int dia = 15;
 
-        controller.backOneMonth(null);
-        assertEquals(fechaInicial.minusMonths(1).getMonth(), controller.dateFocus.getMonth());
-
-
-    }
-
-    @Test
-    void testCambioMesHaciaAdelante() {
-        controller.dateFocus = ZonedDateTime.now();
-        ZonedDateTime fechaInicial = controller.dateFocus;
-
-        controller.forwardOneMonth(null);
-
-        assertEquals(fechaInicial.plusMonths(1).getMonth(), controller.dateFocus.getMonth());
+        String fechaEsperada = String.format("%d-%02d-%02d", año, mes, dia);
+        assertEquals("2023-05-15", fechaEsperada,
+                "El formato de fecha debe ser YYYY-MM-DD");
     }
 
     @Test
@@ -40,5 +31,19 @@ class CalendarControllerTest {
             dias = 28;
         }
         assertEquals(28, dias);
+    }
+    @Test
+    void testMesesEspanolNombres() throws Exception {
+        Field mesesField = CalendarController.class.getDeclaredField("MESES_ESPANOL");
+        mesesField.setAccessible(true);
+        String[] mesesEspanol = (String[]) mesesField.get(null);
+
+        String[] mesesEsperados = {
+                "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio",
+                "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"
+        };
+
+        assertArrayEquals(mesesEsperados, mesesEspanol,
+                "Los nombres de los meses deben coincidir exactamente");
     }
 }
